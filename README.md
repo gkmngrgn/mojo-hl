@@ -6,14 +6,15 @@ the noise from the lsp).
 
 You can add the `mojo-lsp-server` to your eglot config like so:
 
-    (use-package eglot                                                         
-      :ensure t                                                                
-        :defer t                                                                 
-        :hook ((python-mode . eglot-ensure)                                      
-               (go-mode . eglot-ensure)
-               (go-ts-mode . eglot-ensure)
-               (python-ts-mode . eglot-ensure)
-               (mojo-mode . eglot-ensure))
-        :config                                                                  
-        (add-to-list 'eglot-server-programs '(mojo-mode . ("mojo-lsp-server"))))
-
+``` emacs-lisp
+(use-package eglot
+  :ensure t
+  :defer t
+  :hook ((python-mode . eglot-ensure)
+         (go-mode . eglot-ensure)
+         (go-ts-mode . eglot-ensure)
+         (python-ts-mode . eglot-ensure)
+         (mojo-mode . eglot-ensure))
+  :config
+  (add-to-list 'eglot-server-programs '(mojo-mode . ("mojo-lsp-server"))))
+```
