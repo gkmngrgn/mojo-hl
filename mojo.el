@@ -32,13 +32,26 @@
   :doc "Keymap for `mojo-mode'."
   "C-c C-c" #'mojo-compile)
 
+(defun mojo-indent-line ()
+  "Indent current line by 4 spaces."
+  (interactive)
+  (let ((prev-indent (save-excursion
+                       (forward-line -1)
+                       (back-to-indentation)
+                       (current-column))))
+    (beginning-of-line)
+    (indent-line-to prev-indent)
+    prev-indent))
+
 ;Define the major mode.
 (define-derived-mode mojo-mode python-mode "Mojo"
   "Major mode for editing Mojo language code." "mojo mode"
   (font-lock-add-keywords nil mojo-font-lock-keywords 'APPEND)
 
   ;; Set up the indent function.
-  (setq-local indent-line-function 'python-indent-line-function))
+  (setq-local tab-width 4
+              tab-always-indent t
+              indent-line-function 'mojo-indent-line))
   ;; Not yet sure how this should work
   ;; (with-eval-after-load "eglot"
   ;;   (add-to-list 'eglot-stay-out-of 'flymake)))
