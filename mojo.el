@@ -1,6 +1,13 @@
 ;; Define the keywords, types, and built-in functions of Mojo
 (defvar mojo-keywords
-  '("fn" "struct" "let" "var" "inout" "owned" ""))
+  '("alias"
+    "fn"
+    "inout"
+    "let"
+    "owned"
+    "struct"
+    "trait"
+    "var"))
 
 (defvar mojo-types
   '("str" "Int" "Float" "Int8" "UInt8" "Int16" "Uint16" "Int32" "UInt32" "Int64" "UInt64" "Float16" "Float32" "Float64" "Bool"))
